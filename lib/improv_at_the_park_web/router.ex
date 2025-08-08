@@ -18,7 +18,7 @@ defmodule ImprovAtTheParkWeb.Router do
     pipe_through :browser
 
     live "/", HomeLive, :index
-    live "/radar", RadarLive, :index
+    live "/tools", ToolsLive, :index
   end
 
   # Other scopes may use custom stacks.
