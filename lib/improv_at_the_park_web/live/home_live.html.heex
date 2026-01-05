@@ -40,44 +40,6 @@
       <h1 class="text-5xl md:text-7xl font-serif text-green-800 mb-4 leading-tight">
         <span class="block text-green-600">Improv at the Park</span>
       </h1>
-      
-    <!-- Next Session Info - Enhanced Design -->
-      <div class="bg-white/90 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-xl border border-green-200/50 mb-6 max-w-xl mx-auto">
-        <!-- Header Section -->
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-3">
-            <div class="bg-gradient-to-br from-green-100 to-emerald-100 w-12 h-12 rounded-full flex items-center justify-center shadow-sm">
-              <span class="text-xl">📅</span>
-            </div>
-            <div>
-              <div class="text-sm text-green-600 font-medium">Monday Improv Jam</div>
-              <div class="text-xl text-green-800 font-semibold">
-                {@next_session.formatted_date}
-              </div>
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-sm text-green-600 font-medium">{@next_session.time_range}</div>
-            <div class="inline-block bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
-              in {ImprovAtThePark.Events.format_days_until(@next_session.days_until)}
-            </div>
-          </div>
-        </div>
-        
-<!-- Call to Action Section -->
-        <div class="border-t border-green-200/50 pt-4">
-          <a
-            href="https://www.eventbrite.ca/o/improv-at-the-park-32255922907#events"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-xl text-lg font-semibold hover:from-green-600 hover:to-emerald-600 transition-all transform hover:scale-105 shadow-lg border border-green-400 inline-flex items-center justify-center gap-3"
-          >
-            <span class="text-xl">🌿</span>
-            <span>Sign up on Eventbrite</span>
-            <span class="text-sm opacity-90">→</span>
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </div>

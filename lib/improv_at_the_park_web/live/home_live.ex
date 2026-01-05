@@ -20,7 +20,7 @@ defmodule ImprovAtTheParkWeb.HomeLive do
       events = ImprovAtThePark.Events.get_events()
       {:ok, assign(socket, events: events)}
     else
-      {:ok, socket}
+      {:ok, assign(socket, events: [])}
     end
   end
 
