@@ -35,3 +35,4 @@ improv_at_the_park-*.tar
 npm-debug.log
 /assets/node_modules/
 
+.env

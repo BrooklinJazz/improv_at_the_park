@@ -8,11 +8,11 @@
         Generate characters, scenes, and prompts for your improv workshops
       </p>
     </div>
-
-    <!-- Tools Grid -->
+    
+<!-- Tools Grid -->
     <div class="grid lg:grid-cols-2 gap-12">
       
-      <!-- Character Generator -->
+<!-- Character Generator -->
       <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-green-200/50">
         <div class="text-center mb-8">
           <div class="bg-gradient-to-br from-green-100 to-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -21,38 +21,42 @@
           <h2 class="text-3xl font-serif text-green-800 mb-2">Character Generator</h2>
           <p class="text-green-600">Create unique characters for your scenes</p>
         </div>
-
-        <!-- Character Image -->
+        
+<!-- Character Image -->
         <div class="mb-6">
           <h3 class="text-lg font-semibold text-green-800 mb-3">Character Image</h3>
           <div class="bg-green-50 rounded-2xl p-4 border border-green-200">
             <%= if @character_image do %>
-              <img src={@character_image} alt="Generated Character" class="w-full h-64 object-cover rounded-xl" />
+              <img
+                src={@character_image}
+                alt="Generated Character"
+                class="w-full h-64 object-cover rounded-xl"
+              />
             <% else %>
               <div class="w-full h-64 bg-green-100 rounded-xl flex items-center justify-center">
                 <span class="text-green-600 text-lg">Click to generate character image</span>
               </div>
             <% end %>
           </div>
-          <button 
+          <button
             phx-click="generate-character-image"
             class="w-full mt-3 bg-green-100 text-green-800 px-4 py-2 rounded-xl hover:bg-green-200 transition-colors font-medium"
           >
             🎨 Generate Image
           </button>
         </div>
-
-        <!-- Character Description -->
+        
+<!-- Character Description -->
         <div>
           <h3 class="text-lg font-semibold text-green-800 mb-3">Character Description</h3>
           <div class="bg-green-50 rounded-2xl p-4 border border-green-200 min-h-24">
             <%= if @character_description do %>
-              <p class="text-green-800 font-medium"><%= @character_description %></p>
+              <p class="text-green-800 font-medium">{@character_description}</p>
             <% else %>
               <p class="text-green-600">Click to generate character description</p>
             <% end %>
           </div>
-          <button 
+          <button
             phx-click="generate-character-description"
             class="w-full mt-3 bg-green-100 text-green-800 px-4 py-2 rounded-xl hover:bg-green-200 transition-colors font-medium"
           >
@@ -60,8 +64,8 @@
           </button>
         </div>
       </div>
-
-      <!-- Scene Prompt Generator -->
+      
+<!-- Scene Prompt Generator -->
       <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-green-200/50">
         <div class="text-center mb-8">
           <div class="bg-gradient-to-br from-emerald-100 to-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -70,45 +74,45 @@
           <h2 class="text-3xl font-serif text-green-800 mb-2">Scene Prompts</h2>
           <p class="text-green-600">Generate random scene elements</p>
         </div>
-
-        <!-- Location -->
+        
+<!-- Location -->
         <div class="mb-6">
           <h3 class="text-lg font-semibold text-green-800 mb-3">📍 Location</h3>
           <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-200 min-h-16">
             <%= if @scene_prompt.location do %>
-              <p class="text-green-800 font-medium"><%= @scene_prompt.location %></p>
+              <p class="text-green-800 font-medium">{@scene_prompt.location}</p>
             <% else %>
               <p class="text-green-600">Click to generate location</p>
             <% end %>
           </div>
         </div>
-
-        <!-- Relationship -->
+        
+<!-- Relationship -->
         <div class="mb-6">
           <h3 class="text-lg font-semibold text-green-800 mb-3">👥 Relationship</h3>
           <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-200 min-h-16">
             <%= if @scene_prompt.relationship do %>
-              <p class="text-green-800 font-medium"><%= @scene_prompt.relationship %></p>
+              <p class="text-green-800 font-medium">{@scene_prompt.relationship}</p>
             <% else %>
               <p class="text-green-600">Click to generate relationship</p>
             <% end %>
           </div>
         </div>
-
-        <!-- Word -->
+        
+<!-- Word -->
         <div class="mb-6">
           <h3 class="text-lg font-semibold text-green-800 mb-3">🔤 Word</h3>
           <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-200 min-h-16">
             <%= if @scene_prompt.word do %>
-              <p class="text-green-800 font-medium text-xl"><%= @scene_prompt.word %></p>
+              <p class="text-green-800 font-medium text-xl">{@scene_prompt.word}</p>
             <% else %>
               <p class="text-green-600">Click to generate word</p>
             <% end %>
           </div>
         </div>
-
-        <!-- Generate All Button -->
-        <button 
+        
+<!-- Generate All Button -->
+        <button
           phx-click="generate-scene-prompt"
           class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all transform hover:scale-105 shadow-lg font-semibold"
         >
@@ -116,8 +120,6 @@
         </button>
       </div>
     </div>
-
-
   </div>
 </div>
 

@@ -16,6 +16,10 @@ import Config
 #
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
+config :improv_at_the_park,
+  eventbrite_key: System.fetch_env!("EVENTBRITE_KEY"),
+  eventbrite_org_id: System.fetch_env!("EVENTBRITE_ORG_ID")
+
 if System.get_env("PHX_SERVER") do
   config :improv_at_the_park, ImprovAtTheParkWeb.Endpoint, server: true
 end

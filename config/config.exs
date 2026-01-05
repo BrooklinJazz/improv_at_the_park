@@ -7,6 +7,8 @@
 # General application configuration
 import Config
 
+config :elixir, :time_zone_database, Tz.TimeZoneDatabase
+
 config :improv_at_the_park,
   generators: [timestamp_type: :utc_datetime]
 

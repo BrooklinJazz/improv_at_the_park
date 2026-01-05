@@ -9,10 +9,9 @@ defmodule ImprovAtThePark.Application do
   def start(_type, _args) do
     children = [
       ImprovAtTheParkWeb.Telemetry,
-      {DNSCluster, query: Application.get_env(:improv_at_the_park, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:improv_at_the_park, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: ImprovAtThePark.PubSub},
-      # Start the Finch HTTP client for sending emails
-      {Finch, name: ImprovAtThePark.Finch},
       # Start a worker by calling: ImprovAtThePark.Worker.start_link(arg)
       # {ImprovAtThePark.Worker, arg},
       # Start to serve requests, typically the last entry

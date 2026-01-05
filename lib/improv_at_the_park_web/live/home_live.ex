@@ -5,47 +5,23 @@ defmodule ImprovAtTheParkWeb.HomeLive do
   def mount(_params, _session, socket) do
     next_session = ImprovAtThePark.Events.get_next_session_info()
 
-    {:ok, assign(socket,
-      page_title: "Improv at the Park - Welcome",
-      next_session: next_session,
-      shows: [
-        %{
-          id: 1,
-          title: "Sunset Stories",
-          description: "Evening improv under the golden hour sky",
-          date: "June 15, 2024",
-          time: "6:30 PM",
-          location: "Central Park Meadow",
-          color: "sage",
-          icon: "sunset"
-        },
-        %{
-          id: 2,
-          title: "Family Garden Tales",
-          description: "Interactive stories for all ages",
-          date: "July 8, 2024",
-          time: "2:00 PM",
-          location: "Botanical Gardens",
-          color: "mint",
-          icon: "garden"
-        },
-        %{
-          id: 3,
-          title: "Whispering Woods Workshop",
-          description: "Learn the art of outdoor improvisation",
-          date: "August 12, 2024",
-          time: "10:00 AM",
-          location: "Forest Trail",
-          color: "forest",
-          icon: "tree"
+    socket =
+      assign(socket,
+        page_title: "Improv at the Park - Welcome",
+        next_session: next_session,
+        contact_info: %{
+          email: "hello@improvatthepark.com",
+          location: "Central Park • Every Saturday",
+          phone: "(555) 123-4567"
         }
-      ],
-      contact_info: %{
-        email: "hello@improvatthepark.com",
-        location: "Central Park • Every Saturday",
-        phone: "(555) 123-4567"
-      }
-    )}
+      )
+
+    if connected?(socket) do
+      events = ImprovAtThePark.Events.get_events()
+      {:ok, assign(socket, events: events)}
+    else
+      {:ok, socket}
+    end
   end
 
   @impl Phoenix.LiveView
