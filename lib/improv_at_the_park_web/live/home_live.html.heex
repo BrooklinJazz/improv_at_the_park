@@ -1,319 +1,56 @@
-<!-- Hero Section with Background Image -->
-<div
-  id="hero-section"
-  class="min-h-screen relative overflow-hidden"
-  style="background-image: url('/images/ImprovAtTheParkBackground.png'); background-size: cover; background-position: center;"
-  phx-hook="ScrollTo"
->
-  <!-- Overlay for better text readability -->
-  <div class="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
-  
-<!-- Navigation -->
-  <nav class="relative z-10 px-4 sm:px-6 lg:px-8 py-6">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <img
-          src="/images/ImprovAtTheParkLogo.png"
-          alt="Improv at the Park"
-          class="h-16 w-auto drop-shadow-lg"
-        />
-      </div>
-      <div class="hidden md:flex items-center gap-6">
-        <a href="/tools" class="text-green-700 hover:text-green-900 transition-colors font-medium">
-          Tools
-        </a>
-        <button
-          phx-click="scroll-to"
-          phx-value-section="contact"
-          class="bg-green-100 text-green-800 px-6 py-3 rounded-full hover:bg-green-200 transition-colors font-medium border border-green-200"
-        >
-          Contact
-        </button>
-      </div>
-    </div>
-  </nav>
-  
-<!-- Main Hero Content -->
-  <div class="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-20 text-center">
-    <div class="max-w-4xl mx-auto">
-      <!-- Welcome Text -->
-      <h1 class="text-5xl md:text-7xl font-serif text-green-800 mb-4 leading-tight">
-        <span class="block text-green-600">Improv at the Park</span>
-      </h1>
-    </div>
+<nav class="flex items-center justify-between p-4 bg-white shadow mb-6">
+  <div class="flex items-center">
+    <span class="text-2xl font-bold">Improv At The Park</span>
   </div>
-</div>
+  <div class="flex space-x-4">
+    <a
+      href="https://chat.whatsapp.com/your-group-link"
+      target="_blank"
+      rel="noopener"
+      class="text-green-600 hover:text-green-800 font-medium"
+    >
+      WhatsApp
+    </a>
+    <a
+      href="https://www.eventbrite.com/o/improv-at-the-park-123456789"
+      target="_blank"
+      rel="noopener"
+      class="text-blue-600 hover:text-blue-800 font-medium"
+    >
+      Eventbrite
+    </a>
+  </div>
+</nav>
 
-<!-- Join a Jam Section -->
-<section id="jam" class="py-24 bg-gradient-to-b from-green-50 to-emerald-50">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-20">
-      <h2 class="text-4xl md:text-5xl font-serif text-green-800 mb-6">Improv Jams</h2>
-      <p class="text-xl text-green-700 max-w-3xl mx-auto font-light">
-        Everything you need to know about our low-pressure, community facilitated jams
-      </p>
-    </div>
-    
-<!-- Top Row: Location & Time + Map -->
-    <div class="grid lg:grid-cols-2 gap-12 mb-12">
-      <!-- Location & Time -->
-      <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-green-100">
-        <h3 class="text-2xl font-serif text-green-800 mb-6">📍 Location & Time</h3>
-        <div class="space-y-4">
-          <div class="flex items-start gap-4">
-            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-              <span class="text-xl">🏢</span>
-            </div>
-            <div>
-              <h4 class="text-lg font-semibold text-green-800">Address</h4>
-              <p class="text-green-700">{@next_session.address}</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-              <span class="text-xl">🕐</span>
-            </div>
-            <div>
-              <h4 class="text-lg font-semibold text-green-800">When</h4>
-              <p class="text-green-700">Every Monday<br />{@next_session.time_range}</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-              <span class="text-xl">🎭</span>
-            </div>
-            <div>
-              <h4 class="text-lg font-semibold text-green-800">Format</h4>
-              <p class="text-green-700">Drop-in style<br />Some experience recommended</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-<!-- Map -->
-      <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-green-100">
-        <h3 class="text-2xl font-serif text-green-800 mb-6">🗺️ Find Us</h3>
-        <p class="text-xl font-serif text-green-800 mb-6">
-          We meet near the white building with the red roof.
-        </p>
-        <div class="aspect-video rounded-2xl overflow-hidden shadow-lg">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.1234567890123!2d-73.56789012345678!3d45.51234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a1234567890%3A0xabcdef1234567890!2s3400%20Av.%20%C3%89mile-Duploy%C3%A9%2C%20Montr%C3%A9al%2C%20QC%20H2L%202T6!5e0!3m2!1sen!2sca!4v1234567890123"
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          >
-          </iframe>
-        </div>
-        <div class="mt-6 text-center">
-          <a
-            href="https://maps.google.com/?q=3400+Av.+Émile-Duployé,+Montréal,+QC+H2L+2T6"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-6 py-3 rounded-full hover:bg-green-200 transition-colors font-medium border border-green-200"
-          >
-            <span>📍</span>
-            <span>Open in Google Maps</span>
-          </a>
-        </div>
-      </div>
-    </div>
-    
-<!-- Experience Level Section -->
-    <div class="mb-12">
-      <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-green-100 max-w-4xl mx-auto">
-        <h3 class="text-2xl font-serif text-green-800 mb-6">🎯 Recommended Experience Level</h3>
-        <div class="space-y-4">
-          <p class="text-green-700 leading-relaxed">
-            Our jams are designed for players who understand the basics of
-            <strong>platforming</strong>
-            (establishing the who, what, and where of a scene) and are comfortable performing in
-            low-pressure environments.
-          </p>
-          <div class="bg-green-50 rounded-2xl p-6 border border-green-200">
-            <h4 class="text-lg font-semibold text-green-800 mb-3">What to Expect</h4>
-            <ul class="space-y-2 text-green-700">
-              <li class="flex items-start gap-2">
-                <span class="text-green-600 mt-1">✓</span>
-                <span>No required amount of experience - we welcome all skill levels</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-600 mt-1">✓</span>
-                <span>Supportive, encouraging environment for learning and growth</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-600 mt-1">✓</span>
-                <span>Focus on fun and creativity over performance pressure</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-amber-50 rounded-2xl p-6 border border-amber-200">
-            <h4 class="text-lg font-semibold text-amber-800 mb-3">Note for Beginners</h4>
-            <p class="text-amber-700">
-              While we welcome everyone, complete beginners might find the pace overwhelming.
-              Consider taking an introductory improv class first, or reach out to us to discuss
-              if this is the right fit for you!
+<section class="px-4">
+  <h2 class="text-4xl font-semibold mb-4">Upcoming Events</h2>
+  <%= if @events == [] do %>
+    <p class="text-gray-600">No upcoming events at the moment. Please check back later!</p>
+  <% else %>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <%= for event <- @events do %>
+        <article class="bg-white rounded-lg hover:shadow-lg transition-shadow duration-300 ease-in-out overflow-hidden flex flex-col">
+          <%= if event.cover_image_url do %>
+            <img src={event.cover_image_url} alt={event.name} class="w-full h-48 object-cover" />
+          <% end %>
+          <div class="p-4 flex-1 flex flex-col">
+            <h3 class="text-md font-bold text-gray-800 opacity-50">
+              {Calendar.strftime(event.start, "%B %d, %Y at %I:%M %p")}
+            </h3>
+            <h3 class="text-2xl font-bold text-gray-800">{event.name}</h3>
+            <p class="text-sm text-gray-600 mt-2 flex-1">{event.summary}</p>
+            <p class="text-sm text-gray-600 mt-2 flex-1">
+              <.icon name="hero-map-pin" class="w-6 h-6 text-blue-600" /> {event.venue["name"]}
             </p>
+            <a
+              href={event.url || "#"}
+              class="inline-block max-w-fit ml-auto mt-4 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700"
+            >
+              Get Tickets
+            </a>
           </div>
-        </div>
-      </div>
+        </article>
+      <% end %>
     </div>
-    
-<!-- Community Guidelines Section -->
-    <div class="mb-12">
-      <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-green-100 max-w-4xl mx-auto">
-        <h3 class="text-2xl font-serif text-green-800 mb-6">🤝 Community Guidelines</h3>
-        <div class="space-y-6">
-          <p class="text-green-700 leading-relaxed">
-            We're committed to creating a safe, inclusive, and welcoming environment for all participants.
-            Please review and follow these community guidelines.
-          </p>
-          
-<!-- Physical Safety -->
-          <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200">
-            <h4 class="text-lg font-semibold text-blue-800 mb-3">🤲 Physical Safety & Consent</h4>
-            <div class="space-y-3 text-blue-700">
-              <div class="flex items-start gap-2">
-                <span class="text-blue-600 mt-1 font-bold">•</span>
-                <span>
-                  <strong>80/20 Contact Rule:</strong> Don't touch performers without consent
-                </span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-blue-600 mt-1 font-bold">•</span>
-                <span>
-                  <strong>Hover Touch:</strong>
-                  Initiate a hover touch and let them finish the movement to consent
-                </span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-blue-600 mt-1 font-bold">•</span>
-                <span>
-                  <strong>Safe Zones:</strong>
-                  Generally avoid more than surface-level touch of shoulders and upper back unless you know that performer's boundaries
-                </span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-blue-600 mt-1 font-bold">•</span>
-                <span>
-                  <strong>Accessibility:</strong>
-                  Be mindful of accessibility needs and ask about accommodations
-                </span>
-              </div>
-            </div>
-          </div>
-          
-<!-- Content Guidelines -->
-          <div class="bg-purple-50 rounded-2xl p-6 border border-purple-200">
-            <h4 class="text-lg font-semibold text-purple-800 mb-3">🎭 Content & Behavior</h4>
-            <div class="space-y-3 text-purple-700">
-              <div class="flex items-start gap-2">
-                <span class="text-purple-600 mt-1 font-bold">•</span>
-                <span>
-                  <strong>No Punching Down:</strong>
-                  Avoid jokes that target marginalized groups or individuals
-                </span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-purple-600 mt-1 font-bold">•</span>
-                <span>
-                  <strong>Sensitive Subjects:</strong>
-                  Don't bring up extremely sensitive topics without group discussion
-                </span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-purple-600 mt-1 font-bold">•</span>
-                <span>
-                  <strong>Zero Tolerance:</strong>
-                  No -phobic, -ist, or -ism behavior of any kind. This is an LGBTQIA+ safe space.
-                </span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-purple-600 mt-1 font-bold">•</span>
-                <span>
-                  <strong>Supportive Environment:</strong>
-                  Lift each other up and celebrate everyone's contributions.
-                </span>
-              </div>
-            </div>
-          </div>
-          
-<!-- What to Do -->
-          <div class="bg-green-50 rounded-2xl p-6 border border-green-200">
-            <h4 class="text-lg font-semibold text-green-800 mb-3">✅ What We Encourage</h4>
-            <ul class="space-y-2 text-green-700">
-              <li class="flex items-start gap-2">
-                <span class="text-green-600 mt-1">✓</span>
-                <span>Ask questions about boundaries and comfort levels</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-600 mt-1">✓</span>
-                <span>Speak up if something makes you uncomfortable</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-600 mt-1">✓</span>
-                <span>Support fellow performers and their choices</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-600 mt-1">✓</span>
-                <span>Have fun while respecting everyone's safety and dignity</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="bg-amber-50 rounded-2xl p-6 border border-amber-200">
-            <h4 class="text-lg font-semibold text-amber-800 mb-3">⚠️ Important Note</h4>
-            <p class="text-amber-700">
-              If you experience or witness any violations of these guidelines, please speak with a facilitator immediately.
-              We're committed to addressing concerns promptly and maintaining a safe space for everyone.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </section>
-
-<!-- Contact Section -->
-<section id="contact" class="py-24 bg-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-center">
-      <div class="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-green-200/50 max-w-lg w-full">
-        <div class="text-center">
-          <h3 class="text-2xl font-serif text-green-800 mb-6">Contact</h3>
-
-          <div class="flex items-center justify-center gap-3 mb-6">
-            <span class="text-2xl">📧</span>
-            <div class="flex items-center gap-2 bg-green-50 hover:bg-green-100 rounded-full px-4 py-2 transition-all duration-200 border border-green-200">
-              <span class="text-green-800 font-mono text-lg">brooklin@improvatthepark.com</span>
-              <button
-                id="email-copy-button"
-                phx-hook="ClipboardCopy"
-                data-clipboard-text="brooklin@improvatthepark.com"
-                class="text-green-600 hover:text-green-800 transition-colors cursor-pointer bg-transparent border-none p-1 rounded-full hover:bg-green-200"
-                title="Click to copy email address"
-              >
-                📋
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-green-800 text-green-100 py-16">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center gap-4 mb-6 md:mb-0 justify-between">
-      <div class="bg-white rounded-full p-2 shadow-sm">
-        <img src="/images/ImprovAtTheParkLogo.png" alt="Improv at the Park" class="h-12 w-auto" />
-      </div>
-      <span class="text-xl font-serif">Improv at the Park</span>
-    </div>
-  </div>
-</footer>

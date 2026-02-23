@@ -80,7 +80,7 @@ defmodule ImprovAtThePark.Events.Event do
   """
 
   defstruct [
-    :address,
+    :venue,
     :cover_image_url,
     :description,
     :finish,

@@ -1,7 +1,21 @@
 defmodule ImprovAtThePark.Events do
   alias ImprovAtThePark.Events.Event
+  require Logger
 
   def get_events do
+    # temporary caching mechanism to avoid hitting Eventbrite API rate limits during development
+    if File.exists?("./events_dump") do
+      Logger.info("Loading events from cache...")
+      File.read!("./events_dump") |> :erlang.binary_to_term()
+    else
+      Logger.info("Loading events from cache...")
+      events = fetch_events()
+      File.write!("./events_dump", :erlang.term_to_binary(events))
+      events
+    end
+  end
+
+  defp fetch_events do
     eventbrite_key = Application.get_env(:improv_at_the_park, :eventbrite_key)
     eventbrite_org_id = Application.get_env(:improv_at_the_park, :eventbrite_org_id)
 
@@ -18,10 +32,10 @@ defmodule ImprovAtThePark.Events do
         url: event["url"],
         description: event["description"]["text"],
         summary: event["summary"],
-        start: from_iso8601!(event["start"]["utc"]),
-        finish: from_iso8601!(event["end"]["utc"]),
+        start: from_iso8601!(event["start"]["utc"], event["start"]["timezone"]),
+        finish: from_iso8601!(event["end"]["utc"], event["end"]["timezone"]),
         cover_image_url: event["logo"]["original"]["url"],
-        address: event["venue"]["address"]["address_1"],
+        venue: event["venue"],
         published: event["published"] != nil,
         status: event["status"]
       }
@@ -67,9 +81,9 @@ defmodule ImprovAtThePark.Events do
     end
   end
 
-  defp from_iso8601!(datetime_string) do
+  defp from_iso8601!(datetime_string, timezone_string) do
     {:ok, datetime, _offset} = DateTime.from_iso8601(datetime_string)
-    datetime
+    DateTime.shift_zone!(datetime, timezone_string)
   end
 
   defp is_future_event?(%Event{finish: finish}) do
