@@ -9,21 +9,23 @@
       rel="noopener"
       class="text-green-600 hover:text-green-800 font-medium"
     >
-      WhatsApp
-    </a>
-    <a
-      href="https://www.eventbrite.com/o/improv-at-the-park-123456789"
-      target="_blank"
-      rel="noopener"
-      class="text-blue-600 hover:text-blue-800 font-medium"
-    >
-      Eventbrite
+      Join Our WhatsApp
     </a>
   </div>
 </nav>
 
 <section class="px-4">
-  <h2 class="text-4xl font-semibold mb-4">Upcoming Events</h2>
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-4xl inline-block w-max-content font-semibold mb-4">Upcoming Events</h2>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://www.eventbrite.ca/o/improv-at-the-park-32255922907"
+      class="text-2xl inline-block w-max-content font-semibold hover:underline mb-4"
+    >
+      See More On Eventbrite
+    </a>
+  </div>
   <%= if @events == [] do %>
     <p class="text-gray-600">No upcoming events at the moment. Please check back later!</p>
   <% else %>
