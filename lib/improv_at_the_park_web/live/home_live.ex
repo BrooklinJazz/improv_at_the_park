@@ -8,7 +8,8 @@ defmodule ImprovAtTheParkWeb.HomeLive do
         page_title: "Improv at the Park - Welcome",
         contact_info: %{
           email: "brooklin@improvatthepark.com"
-        }
+        },
+        show_whatsapp_modal: false
       )
 
     if connected?(socket) do
@@ -17,5 +18,15 @@ defmodule ImprovAtTheParkWeb.HomeLive do
     else
       {:ok, assign(socket, events: [])}
     end
+  end
+
+  @impl Phoenix.LiveView
+  def handle_event("open_whatsapp_modal", _params, socket) do
+    {:noreply, assign(socket, show_whatsapp_modal: true)}
+  end
+
+  @impl Phoenix.LiveView
+  def handle_event("close_whatsapp_modal", _params, socket) do
+    {:noreply, assign(socket, show_whatsapp_modal: false)}
   end
 end
