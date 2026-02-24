@@ -1,6 +1,49 @@
 <nav class="flex items-center justify-between p-4 bg-white shadow mb-6">
-    <h1 class="text-2xl font-bold">Improv At The Park</h1>
+  <h1 class="text-2xl font-bold">Improv At The Park</h1>
 </nav>
+
+<div class="flex justify-between w-3/5 mb-4 ml-10">
+  <div class="flex justify-between items-center w-[300px]">
+    <button phx-click="previous_month">
+      <.icon name="hero-arrow-left" class="w-6 h-6 text-gray-600" />
+    </button>
+    <h2 class="text-2xl font-bold mx-4">{ImprovAtThePark.Calendar.get_name(@displayed_month)}</h2>
+    <button phx-click="next_month">
+      <.icon name="hero-arrow-right" class="w-6 h-6 text-gray-600" />
+    </button>
+  </div>
+
+  <h2 class="text-2xl font-bold">
+    {@displayed_year}
+  </h2>
+</div>
+
+<table class="w-3/5 border-collapse ml-10">
+  <tr>
+    <th>Sunday</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+  </tr>
+  <%!-- Monday Tuesday Wed, Thu, Fry, Sat, Sun = 1-7 --%>
+  <tr :for={week <- ImprovAtThePark.Calendar.month(2026, @displayed_month)}>
+    <td
+      :for={date <- week}
+      class="bg-gray-300 border-2 border-black h-[100px] w-[100px] align-top"
+    >
+      <%= if date.month == @displayed_month do %>
+        <p class="text-gray-800 font-bold ">{date.day}</p>
+        <% title = Enum.random(["Improv Games", "Troupe Jam", "House Jam", "Unknown"])   %>
+        <button :if={Date.day_of_week(date) in [7, 3, 6]} class={button_styles(title) <> " rounded-full p-2 scale-110"}><%= title %></button>
+      <% else %>
+        <p class="text-gray-500 font-bold">{date.day}</p>
+      <% end %>
+    </td>
+  </tr>
+</table>
 
 <section class="px-4">
   <div class="flex items-center justify-between mb-6">
@@ -44,4 +87,3 @@
     </div>
   <% end %>
 </section>
-
