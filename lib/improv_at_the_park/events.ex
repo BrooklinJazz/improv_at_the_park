@@ -8,7 +8,7 @@ defmodule ImprovAtThePark.Events do
       Logger.info("Loading events from cache...")
       File.read!("./events_dump") |> :erlang.binary_to_term()
     else
-      Logger.info("Loading events from cache...")
+      Logger.warning("Loading events from Eventbrite...")
       events = fetch_events()
       File.write!("./events_dump", :erlang.term_to_binary(events))
       events

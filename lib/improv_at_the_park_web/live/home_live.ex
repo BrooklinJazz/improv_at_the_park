@@ -15,6 +15,7 @@ defmodule ImprovAtTheParkWeb.HomeLive do
       )
 
     if connected?(socket) do
+      ImprovAtThePark.GoogleCalendar.get_events() |> IO.inspect()
       events = ImprovAtThePark.Events.get_events()
       {:ok, assign(socket, events: events)}
     else
