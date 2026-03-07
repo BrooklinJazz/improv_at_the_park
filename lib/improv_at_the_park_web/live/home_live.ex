@@ -33,7 +33,6 @@ defmodule ImprovAtTheParkWeb.HomeLive do
     {:noreply, assign(socket, show_whatsapp_modal: false)}
   end
 
-  # TODO HANDLE YEAR CHANGE
   def handle_event("previous_month", _params, socket) do
     if socket.assigns.displayed_month == 1 do
       socket =
