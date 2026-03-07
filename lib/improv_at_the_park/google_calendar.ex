@@ -22,13 +22,18 @@ defmodule ImprovAtThePark.GoogleCalendar do
             id: event["id"],
             summary: event["summary"],
             description: event["description"],
-            start: event["start"]["dateTime"],
-            end: event["end"]["dateTime"]
+            start: from_iso8601!(event["start"]["dateTime"]),
+            finish: from_iso8601!(event["end"]["dateTime"])
           }
         end)
 
       File.write!(@google_calendar_dump, :erlang.term_to_binary(events))
       events
     end
+  end
+
+  def from_iso8601!(datetime_str) do
+    {:ok, datetime, _offset} = DateTime.from_iso8601(datetime_str)
+    datetime
   end
 end

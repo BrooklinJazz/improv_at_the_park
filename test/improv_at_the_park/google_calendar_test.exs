@@ -16,6 +16,12 @@ defmodule ImprovAtThePark.GoogleCalendarTest do
   test "get_events returns a list of events" do
     events = GoogleCalendar.get_events()
     assert is_list(events)
-    assert Enum.all?(events, fn event -> is_struct(event, GoogleCalendar.Event) end)
+
+    assert Enum.all?(events, fn event ->
+
+             is_struct(event, GoogleCalendar.Event)
+             %DateTime{} = event.start
+             %DateTime{} = event.finish
+           end)
   end
 end
