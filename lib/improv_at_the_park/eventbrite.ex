@@ -1,16 +1,16 @@
-defmodule ImprovAtThePark.Events do
-  alias ImprovAtThePark.Events.Event
+defmodule ImprovAtThePark.Eventbrite do
   require Logger
+  @eventbrite_dump "./eventbrite_dump"
 
   def get_events do
     # temporary caching mechanism to avoid hitting Eventbrite API rate limits during development
-    if File.exists?("./events_dump") do
+    if File.exists?(@eventbrite_dump) do
       Logger.info("Loading events from cache...")
-      File.read!("./events_dump") |> :erlang.binary_to_term()
+      File.read!(@eventbrite_dump) |> :erlang.binary_to_term()
     else
       Logger.warning("Loading events from Eventbrite...")
       events = fetch_events()
-      File.write!("./events_dump", :erlang.term_to_binary(events))
+      File.write!(@eventbrite_dump, :erlang.term_to_binary(events))
       events
     end
   end
@@ -26,7 +26,7 @@ defmodule ImprovAtThePark.Events do
       )
 
     Enum.map(events, fn event ->
-      %ImprovAtThePark.Events.Event{
+      %__MODULE__.Event{
         id: event["id"],
         name: event["name"]["text"],
         url: event["url"],
@@ -86,10 +86,10 @@ defmodule ImprovAtThePark.Events do
     DateTime.shift_zone!(datetime, timezone_string)
   end
 
-  defp is_future_event?(%Event{finish: finish}) do
+  defp is_future_event?(%__MODULE__.Event{finish: finish}) do
     DateTime.compare(DateTime.utc_now(), finish) == :lt
   end
 
-  defp is_published_event?(%Event{id: id, published: published, status: status}),
+  defp is_published_event?(%__MODULE__.Event{id: id, published: published, status: status}),
     do: published and status != "draft"
 end

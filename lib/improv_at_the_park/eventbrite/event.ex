@@ -1,4 +1,4 @@
-defmodule ImprovAtThePark.Events.Event do
+defmodule ImprovAtThePark.Eventbrite.Event do
   @moduledoc """
   Struct for basic event information.
 
